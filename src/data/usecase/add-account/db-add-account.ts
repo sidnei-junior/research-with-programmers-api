@@ -9,15 +9,8 @@ export class DbAddAccount implements AddAccount {
   }
 
   async add(account: AddAccountModel): Promise<AccountModel> {
-    this.encrypter.encrypt(account.password)
+    await this.encrypter.encrypt(account.password)
     // eslint-disable-next-line @typescript-eslint/return-await
-    return new Promise((resolve) =>
-      resolve({
-        id: '',
-        name: '',
-        email: '',
-        password: ''
-      })
-    )
+    return new Promise((resolve) => resolve(null))
   }
 }
