@@ -1,4 +1,4 @@
-module.export = {
+export default {
   mongodbMemoryServerOptions: {
     instance: {
       dbName: 'jest'
