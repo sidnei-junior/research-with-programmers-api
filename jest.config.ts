@@ -6,7 +6,8 @@ export default {
     '!<rootDir>/src/**/*protocols.ts',
     '!<rootDir>/src/**/models/*.ts',
     '!<rootDir>/src/**/usecases/*.ts',
-    '!<rootDir>/src/**/index.ts'
+    '!<rootDir>/src/**/index.ts',
+    '!<rootDir>/src/main/**'
   ],
   collectCoverage: true,
   coverageDirectory: 'coverage',
