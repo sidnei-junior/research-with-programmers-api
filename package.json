@@ -9,7 +9,7 @@
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "yarn test -- --watch -c jest-unit-config.ts",
     "test:integration": "yarn test -- --watch -c jest-integration-config.ts",
-    "test:staged": "yarn test -- --findRelatedTest",
+    "test:staged": "yarn test -- --findRelatedTests --coverage",
     "test:ci": "yarn test -- --coverage",
     "prepare": "husky install"
   },
