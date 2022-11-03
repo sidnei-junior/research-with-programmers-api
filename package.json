@@ -12,8 +12,7 @@
     "test:unit": "yarn test -- --watch -c jest-unit-config.ts",
     "test:integration": "yarn test -- --watch -c jest-integration-config.ts",
     "test:staged": "yarn test -- --findRelatedTests --coverage",
-    "test:ci": "yarn test -- --coverage",
-    "prepare": "husky install"
+    "test:ci": "yarn test -- --coverage"
   },
   "keywords": [],
   "author": "",
@@ -54,6 +53,6 @@
     "validator": "^13.7.0"
   },
   "engines": {
-    "node": "18.x"
+    "node": "16.x"
   }
 }
