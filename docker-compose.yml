@@ -16,7 +16,9 @@ services:
     command: npm start
     volumes:
       - ./dist:/usr/src/research-with-programmers-api/dist
+      - ./package.json:/usr/src/research-with-programmers-api/package.json
     ports:
       - '5050:5050'
+      - '9222:9222'
     links:
       - mongo
