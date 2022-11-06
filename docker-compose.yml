@@ -15,7 +15,7 @@ services:
     restart: always
     command: bash -c "npm install --omit=dev --legacy-peer-deps && npm run debug"
     volumes:
-      - ./dist:/usr/src/research-with-programmers-api/dist
+      - ./dist/:/usr/src/research-with-programmers-api/dist/
       - ./package.json:/usr/src/research-with-programmers-api/package.json
     ports:
       - '5050:5050'
