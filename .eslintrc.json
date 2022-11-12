@@ -3,6 +3,7 @@
   "parserOptions": {
     "project": "./tsconfig.eslint.json"
   },
+  "ignorePatterns": "*.config.[jt]s",
   "rules": {
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/space-before-function-paren": "off"
