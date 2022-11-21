@@ -3,13 +3,18 @@
 import { ObjectId } from 'mongodb'
 import { AddAccountRepository } from '../../../../data/protocols/db/account/add-account-repository'
 import { LoadAccountByEmailRepository } from '../../../../data/protocols/db/account/load-account-by-email-repository'
+import { LoadAccountByTokenRepository } from '../../../../data/protocols/db/account/load-account-by-token-repository'
 import { UpdateAccessTokenRepository } from '../../../../data/protocols/db/account/uptade-access-token-repository'
 import { AccountModel } from '../../../../domain/models/account'
 import { AddAccountModel } from '../../../../domain/usecases/add-account'
 import { MongoHelper } from '../helpers/mongo-helper'
 
 export class AccountMongoRepository
-  implements AddAccountRepository, LoadAccountByEmailRepository, UpdateAccessTokenRepository
+  implements
+    AddAccountRepository,
+    LoadAccountByEmailRepository,
+    UpdateAccessTokenRepository,
+    LoadAccountByTokenRepository
 {
   async add(accountData: AddAccountModel): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
@@ -37,5 +42,14 @@ export class AccountMongoRepository
         }
       }
     )
+  }
+
+  async loadByToken(token: string, role?: string): Promise<AccountModel> {
+    const accountCollection = await MongoHelper.getCollection('accounts')
+    console.log('🚀 ~ file: account-mongo-repository.ts ~ line 49 ~ loadByToken ~ accountCollection', accountCollection)
+    const accountByToken = await accountCollection.findOne({ accessToken: token, role })
+    console.log('🚀 ~ file: account-mongo-repository.ts ~ line 51 ~ loadByToken ~ accountByToken', accountByToken)
+    const account = accountByToken && MongoHelper.map(accountByToken)
+    return account
   }
 }
