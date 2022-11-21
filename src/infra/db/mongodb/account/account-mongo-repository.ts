@@ -46,9 +46,7 @@ export class AccountMongoRepository
 
   async loadByToken(token: string, role?: string): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
-    console.log('🚀 ~ file: account-mongo-repository.ts ~ line 49 ~ loadByToken ~ accountCollection', accountCollection)
     const accountByToken = await accountCollection.findOne({ accessToken: token, role })
-    console.log('🚀 ~ file: account-mongo-repository.ts ~ line 51 ~ loadByToken ~ accountByToken', accountByToken)
     const account = accountByToken && MongoHelper.map(accountByToken)
     return account
   }
