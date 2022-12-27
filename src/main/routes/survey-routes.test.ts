@@ -85,5 +85,29 @@ describe('Survey Routes', () => {
     test('Should return 403 on load surveys without accessToken', async () => {
       await request(app).get('/api/surveys').expect(403)
     })
+
+    test('Should return 2XX on load surveys with valid accessToken', async () => {
+      const res = await accountCollection.insertOne({
+        name: 'Sidnei',
+        email: 'sidnei.ifrn@gmail.com',
+        password: '123'
+      })
+      const { insertedId: id } = res
+      const accessToken = sign({ id }, env.jwtSecret)
+      await accountCollection.updateOne(
+        {
+          _id: id
+        },
+        {
+          $set: {
+            accessToken
+          }
+        }
+      )
+      await request(app)
+        .get('/api/surveys')
+        .set('x-access-token', accessToken)
+        .expect(200 | 204)
+    })
   })
 })
