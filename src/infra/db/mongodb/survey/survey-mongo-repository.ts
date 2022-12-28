@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/brace-style */
 /* eslint-disable @typescript-eslint/indent */
 
-import { AddSurveyRepository } from '../../../../data/protocols/db/survey/add-survey-repository'
-import { LoadSurveysRepository } from '../../../../data/protocols/db/survey/load-surveys-repository'
-import { SurveyModel } from '../../../../domain/models/survey'
-import { AddSurveyModel } from '../../../../domain/usecases/add-survey'
+import { AddSurveyRepository } from '@/data/protocols/db/survey/add-survey-repository'
+import { LoadSurveysRepository } from '@/data/protocols/db/survey/load-surveys-repository'
+import { SurveyModel } from '@/domain/models/survey'
+import { AddSurveyModel } from '@/domain/usecases/add-survey'
 import { MongoHelper } from '../helpers/mongo-helper'
 
 export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository {
