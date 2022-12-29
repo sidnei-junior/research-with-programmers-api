@@ -14,6 +14,8 @@ services:
     working_dir: /usr/src/research-with-programmers-api
     restart: always
     command: bash -c "npm install --omit=dev --legacy-peer-deps && npm run debug"
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/research-with-programmers-api
     volumes:
       - ./dist/:/usr/src/research-with-programmers-api/dist/
       - ./package.json:/usr/src/research-with-programmers-api/package.json
